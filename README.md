@@ -107,6 +107,18 @@
 		1) "THROTTLE::IP::ALLOWED"
 		2) "THROTTLE::IP::DENIED"
 
+		
+		$> echo 'hgetall "THROTTLE::IP::ALLOWED"'|redis-cli|head -2
+			
+			20190130-212732::79398768-07be-4161-87c5-df0de85cf623::127.0.0.1
+			{"IP":"127.0.0.1","XForwardedFor":"","URL":"/v1/api/request/dummy-test1","UserAgent":"curl/7.47.0","Referrer":"","Extra":"dummy-test1","Status":"Allowed","DateTime":"2019-01-30T21:27:32.495490816+08:00"}
+
+		$> echo 'hgetall "THROTTLE::IP::DENIED"'|redis-cli|head -2
+			
+			20190130-213655::effad9b1-acfb-4d50-9a2d-6930a24c33f7::127.0.0.1
+			{"IP":"127.0.0.1","XForwardedFor":"","URL":"/v1/api/request/dummy-test9","UserAgent":"curl/7.47.0","Referrer":"","Extra":"dummy-test9","Status":"Denied","DateTime":"2019-01-30T21:36:55.447980671+08:00"}
+
+
 ```
 
 ### Notes
